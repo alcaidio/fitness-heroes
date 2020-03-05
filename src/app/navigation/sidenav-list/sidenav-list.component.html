@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <ng-container *ngFor="let navLink of navLinks">
+    <a mat-list-item [routerLink]="navLink.href" (click)="onClose()">
+      <mat-icon>{{ navLink.icon }}</mat-icon>
+      <span class="nav-caption">{{ navLink.title }}</span>
+    </a>
+  </ng-container>
+</mat-nav-list>
