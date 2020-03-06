@@ -1,10 +1,10 @@
 <section class="signup-form">
   <form
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="8px"
-    #f="ngForm"
-    (ngSubmit)="onSubmit(f)"
   >
     <mat-form-field appearance="fill">
       <mat-label>Enter your email</mat-label>
