@@ -1,8 +1,18 @@
 <mat-nav-list>
-  <ng-container *ngFor="let navLink of navLinks">
-    <a mat-list-item [routerLink]="navLink.href" (click)="onClose()">
-      <mat-icon>{{ navLink.icon }}</mat-icon>
-      <span class="nav-caption">{{ navLink.title }}</span>
+    <a *ngIf="!isAuth" routerLink="/signup" mat-list-item (click)="onClose()">
+      <mat-icon>face</mat-icon>
+      <span class="nav-caption">Signup</span>
     </a>
-  </ng-container>
+    <a *ngIf="!isAuth" routerLink="/login" mat-list-item (click)="onClose()">
+      <mat-icon>input</mat-icon>
+      <span class="nav-caption">Login</span>
+    </a>
+    <a *ngIf="isAuth" routerLink="/training" mat-list-item (click)="onClose()">
+      <mat-icon>fitness_center</mat-icon>
+      <span class="nav-caption">Training</span>
+    </a>
+    <a *ngIf="isAuth" mat-list-item style="cursor: pointer;" (click)="onLogout()">
+      <mat-icon>eject</mat-icon>
+      <span class="nav-caption">Logout</span>
+    </a>
 </mat-nav-list>

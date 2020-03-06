@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angular-fitness-tracker",
+      "public": "dist/angular-fitness-tracker",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
