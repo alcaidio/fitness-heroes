@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';

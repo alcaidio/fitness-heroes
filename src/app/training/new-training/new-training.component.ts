@@ -1,11 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import 'firebase/firestore';
-
-export interface Exercice {
-  title: string,
-  value: string
-}
+import { Exercise } from '../exercise.model';
+import { TrainingService } from './../training.service';
 
 @Component({
   selector: 'app-new-training',
@@ -14,22 +11,16 @@ export interface Exercice {
 })
 export class NewTrainingComponent implements OnInit {
 
-  exercices: Exercice[] = [
-    { title: 'Crunches', value: 'crunches' },
-    { title: 'Touch Toes', value: 'touch-toes' },
-    { title: 'Side Lunges', value: 'side-lunges' },
-    { title: 'Burpees', value: 'burpees' },
-  ];
+  exercises: Exercise[] = [];
 
-  @Output() trainingStart = new EventEmitter<void>()
-
-  constructor() { }
+  constructor(private trainingService: TrainingService) { }
 
   ngOnInit(): void {
+    this.exercises = this.trainingService.getAvailableExercises()
   }
 
-  onStartTraining() {
-    this.trainingStart.emit()
+  onStartTraining(form: NgForm) {
+    this.trainingService.startExercise(form.value.exercise)
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TrainingService } from './../training.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StopTrainingComponent } from './stop-training.component';
 
@@ -8,45 +9,41 @@ import { StopTrainingComponent } from './stop-training.component';
   styleUrls: ['./current-training.component.scss']
 })
 export class CurrentTrainingComponent implements OnInit {
-  @Output() trainingExit = new EventEmitter()
   progress = 0
   timer: ReturnType<typeof setInterval>
-  time = 15
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private trainingService: TrainingService) { }
 
   ngOnInit() {
-    this.startOrResumeTimer(this.time)
+    this.startOrResumeTimer()
   }
 
   onStop() {
     clearInterval(this.timer)
-    const dialogRef = this.dialog.open(StopTrainingComponent, {data: {
-      progress: this.progressRounded
-    }})
+    const dialogRef = this.dialog.open(StopTrainingComponent, {
+      data: {
+        progress: this.progress
+      }
+    })
     dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        this.trainingExit.emit()
+      if (result) {
+        this.trainingService.cancelExercise(this.progress)
       } else {
-        this.startOrResumeTimer(this.time)
+        this.startOrResumeTimer()
       }
     })
   }
 
-  private startOrResumeTimer(timeInSecond: number) {
+  private startOrResumeTimer() {
+    const duration = this.trainingService.getRunningExercise().duration   
+    const step = duration * 10 // (duration / 100) * 1000 
     this.timer = setInterval(() => {
-      const refresh = 200
-      const coeff = 100 / ((1000/refresh) * timeInSecond)
-      this.progress = this.progress + coeff
+      this.progress++
       if (this.progress >= 100) {
+        this.trainingService.completeExercise()
         clearInterval(this.timer)
-        this.progress = 100
       }
-    }, 200)
-  }
-
-  get progressRounded() {
-    return Math.round(this.progress)
+    }, step)
   }
 
 }
