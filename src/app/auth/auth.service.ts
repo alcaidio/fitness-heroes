@@ -9,7 +9,7 @@ import { User } from './user.model';
 })
 export class AuthService {
   authChange = new Subject<boolean>()
-  private user: User
+  private user: User = null
 
   constructor(private router: Router) { }
 
@@ -39,7 +39,7 @@ export class AuthService {
     return { ...this.user }
   }
 
-  isAuth() {
+  isAuth() {    
     return this.user !== null
   }
   
