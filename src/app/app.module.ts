@@ -1,4 +1,3 @@
-import { AuthService } from 'src/app/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
@@ -22,7 +21,7 @@ import { NewTrainingComponent } from './training/new-training/new-training.compo
 import { PastTrainingComponent } from './training/past-training/past-training.component';
 import { TrainingComponent } from './training/training.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-
+import 'firebase/firestore'
 
 @NgModule({
   declarations: [
