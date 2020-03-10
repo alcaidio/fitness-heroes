@@ -1,8 +1,20 @@
-mat-form-field {
-    width: 100%;
-    max-width: 500px;
+mat-card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
 }
 
-.signup-form {
-    margin-top: 20px;
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+button {
+  margin-top: 15px;
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
