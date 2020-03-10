@@ -13,8 +13,8 @@ import { TrainingService } from './../training.service';
 export class NewTrainingComponent implements OnInit, OnDestroy {
   exercises: Exercise[]
   isLoading = true
-  private exerciseSubscription: Subscription
   private loadingSubscription: Subscription
+  private exerciseSubscription: Subscription
 
   constructor(private trainingService: TrainingService, private uiService: UIService) { }
 
@@ -37,8 +37,12 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.exerciseSubscription.unsubscribe()
-    this.loadingSubscription.unsubscribe()
+    if (this.exerciseSubscription) {
+      this.exerciseSubscription.unsubscribe()
+    }
+    if (this.loadingSubscription) {
+      this.loadingSubscription.unsubscribe()
+    }
   }
 
 }
