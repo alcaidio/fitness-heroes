@@ -12,17 +12,14 @@ import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { UIService } from './shared/ui.service';
-import { TrainingModule } from './training/training.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    PageNotFoundComponent,
     HeaderComponent,
     SidenavListComponent,
   ],
@@ -35,7 +32,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
-    TrainingModule,
     AuthModule,
   ],
   providers: [UIService],
