@@ -9,7 +9,7 @@ import 'firebase/firestore';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { appReducer } from './app.reducer';
+import { reducers } from './app.reducer';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -35,7 +35,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
     AuthModule,
-    StoreModule.forRoot({ ui: appReducer }),
+    StoreModule.forRoot(reducers),
   ],
   providers: [UIService],
   bootstrap: [AppComponent],
