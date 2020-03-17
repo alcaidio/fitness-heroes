@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UIService } from 'src/app/shared/ui.service';
 import * as fromRoot from '../../app.reducer';
 import { Exercise } from '../exercise.model';
 import * as fromTraining from '../store/training.reducer';
@@ -19,7 +18,6 @@ export class NewTrainingComponent implements OnInit {
 
   constructor(
     private trainingService: TrainingService,
-    private uiService: UIService,
     private store: Store<fromTraining.State>
   ) { }
 

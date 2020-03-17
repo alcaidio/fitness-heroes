@@ -1,7 +1,7 @@
 <section fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
   <mat-card>
     <mat-progress-bar
-      *ngIf="isLoading"
+      *ngIf="isLoading$ | async"
       mode="query"
       class="top"
     ></mat-progress-bar>
